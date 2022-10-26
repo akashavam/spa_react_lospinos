@@ -1,0 +1,10 @@
+const API_URL="http://localhost:8080"
+
+export const SIGNUP_POST_ENDPOINT= API_URL+"/usuario"
+export const SIGNIN_POST_ENDPOINT= API_URL+"/usuario/login"
+export const MISFACTURAS_GET_ENDPOINT= API_URL+"/usuario/misfacturas"
+export const CREARFACTURA_POST_ENDPOINT= API_URL+"/factura"
+export const FACTURASCREADAS_GET_ENDPOINT= API_URL+"/factura"
+export const FACTURADETALLE_GET_ENDPOINT= API_URL+"/factura"
+export const ELIMINARFACTURA_DELETE_ENDPOINT= API_URL+"/factura"
+export const ACTUALIZARFACTURA_PUT_ENDPOINT= API_URL+"/factura"
