@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios';
 import { ACTUALIZARFACTURA_PUT_ENDPOINT, FACTURADETALLE_GET_ENDPOINT } from '../connections/helpers/endpoints'
-import {CrearFacturaFormulario} from '../components/CrearFacturaFormulario';
+import { CrearFacturaFormulario} from '../components/CrearFacturaFormulario';
 import { Alert, Card, Col, Container, Row } from 'react-bootstrap'
 
 function EditarFactura() {
@@ -22,12 +22,12 @@ function EditarFactura() {
         })        
     }, [id, navegar]);
 
-    const editar= async({valorPagar, valorMora, valorFactura}) => {
+    const editar= async({estado}) => {
 
         const error={};
         setErrores(error);
 
-        axios.put(`${ACTUALIZARFACTURA_PUT_ENDPOINT}/${factura.idFactura}`, {valorPagar, valorMora, valorFactura})
+        axios.put(`${ACTUALIZARFACTURA_PUT_ENDPOINT}/${factura.idFactura}`, {estado})
         .then(respuesta=>{
             navegar("/");
         })
@@ -42,7 +42,7 @@ function EditarFactura() {
         <Container className="mt-3 mb-3">
             <Row className="justify-content-md-center">
                 <Col sm="12" md="8" lg="6">
-                    <h3 className="text-center">Editar factura</h3>
+                    <h3 className="text-center">Pagar factura</h3>
                     <Card.Body>
                         {errores.update && <Alert variant="danger">{errores.update}</Alert>}
 
@@ -50,9 +50,9 @@ function EditarFactura() {
                             <CrearFacturaFormulario 
                                 errores={errores} 
                                 callback={editar}
-                                fFechaFactura={factura.creado}
-                                fFecheVencimiento={factura.fFecheVencimiento}
-                                fValorPagar={factura.valorFactura}
+                                fFechaFactura={factura.fechaFactura}
+                                fFechaVencimiento={factura.fechaVencimiento}
+                                fValorPagar={factura.valorPagar}
                                 fValorMora={factura.valorMora}
                                 fValorFactura={factura.valorFactura}
                                 editable={true}

@@ -26,10 +26,9 @@ const Misfacturas= ()=>{
         <Row className="justify-content-md-center">
             <Col sm="12" md="8" lg="6">
                 <h3 className="text-center">Mis facturas</h3>
-                <Card.Body>                   
+                <Card.Body>                  
                     {buscando ? "Cargando..." : (facturas.length===0 && "No hay facturas disponibles")}
-                    {facturas.map(factura => 
-                        <FacturaCard key={factura.idFactura} factura={factura} editable={true}/>)
+                    {facturas.map(factura => <FacturaCard key={factura.idFactura} factura={factura} editable={true}/>)
                     }
                 </Card.Body>
             </Col>

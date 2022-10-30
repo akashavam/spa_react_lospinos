@@ -2,7 +2,7 @@ import axios from "axios"
 import { useState } from "react"
 import { Alert, Card, Col, Container, Row } from "react-bootstrap"
 import { Link, useNavigate } from "react-router-dom"
-import { SignFormulario } from "../components/SignupFormulario.js"
+import { SignupFormulario } from "../components/SignupFormulario.js"
 import { SIGNUP_POST_ENDPOINT } from "../connections/helpers/endpoints.js"
 
 const Signup= ()=>{
@@ -32,7 +32,7 @@ const Signup= ()=>{
                     <h3 className="text-center">Registrar usuario</h3>
                     <Card.Body>                   
                         {errores.crear && <Alert variant="danger">{errores.crear}</Alert>}
-                        <SignFormulario errores={errores} callback={registro} />
+                        <SignupFormulario errores={errores} callback={registro} />
                         <div className="mt-3">
                             <Link to="/signin">¿Ya tienes una cuenta? Iniciar sesion aqui.</Link>
                         </div>

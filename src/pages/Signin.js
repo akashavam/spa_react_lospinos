@@ -30,7 +30,7 @@ function Signin() {
             navegar("/");
         })
         .catch(err=>{
-            setErrores({ ingresar: "No se puede iniciar sesion con esas credenciales" });
+            setErrores({ ingresar: "No se puede iniciar sesion con esas credenciales" }+ err);
         });
 
     }

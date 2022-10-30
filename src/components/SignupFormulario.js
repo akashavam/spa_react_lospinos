@@ -3,7 +3,7 @@ import { Button, Form } from "react-bootstrap"
 
 
 
-const SignFormulario= ({errores, callback})=>{
+const SignupFormulario= ({errores, callback})=>{
 
     const [nombre, setNombre]= useState("")
     const [email, setEmail]= useState("")
@@ -81,4 +81,4 @@ const SignFormulario= ({errores, callback})=>{
 }
 
 
-export {SignFormulario}
+export {SignupFormulario}

@@ -17,6 +17,7 @@ function CrearFactura() {
        
         axios.post(CREARFACTURA_POST_ENDPOINT, {fechaFactura, fechaVencimiento, valorPagar, valorMora, valorFactura}
             ).then(response=>{
+                console.log(response);
                 navegar(`/factura/${response.data.idFactura}`);
         })
         .catch(error=>{
@@ -31,7 +32,6 @@ function CrearFactura() {
                     <h3 className="text-center">Crear factura</h3>
                     <Card.Body>
                         {errores.new && <Alert variant="danger">{errores.new}</Alert>}
-
                         <CrearFacturaFormulario errores={errores} callback={crear} editable={false}/>
                     </Card.Body>
                 </Col>

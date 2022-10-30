@@ -12,6 +12,7 @@ const FacturasCreadas= ()=>{
     useEffect(()=>{
         axios.get(FACTURASCREADAS_GET_ENDPOINT)
         .then(respuesta=>{
+            console.log(respuesta);
             setFacturas(respuesta.data)
             setBuscando(false)
         }).catch(e=>{

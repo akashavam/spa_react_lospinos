@@ -3,17 +3,17 @@ import {Form, Button, Row, Col} from "react-bootstrap"
 import moment from 'moment';
 
 function CrearFacturaFormulario({errores, callback, 
-    fFechaFactura="", fFecheVencimiento="", fValorPagar="0", fValorMora="0", fValorFactura="0", editable}) {
+    fFechaFactura="", fFechaVencimiento="", fValorPagar="", fValorMora="", fValorFactura="", editable}) {
 
     const [fechaFactura, setFechaFactura]=useState(fFechaFactura);
-    const [fechaVencimiento, setFechaVencimiento]=useState(fFecheVencimiento);
+    const [fechaVencimiento, setFechaVencimiento]=useState(fFechaVencimiento);
     const [valorPagar, setValorPagar]=useState(fValorPagar);
     const [valorMora, setValorMora]=useState(fValorMora);
     const [valorFactura, setValorFactura]=useState(fValorFactura);
 
     const enviar = (e) => {
         e.preventDefault();
-        (!editable) ? callback({fechaFactura, fechaVencimiento}) : callback({valorFactura, valorMora, valorFactura})
+        (!editable) ? callback({fechaFactura, fechaVencimiento,valorPagar,valorMora,valorFactura }) : callback({})
     }
 
     return (
@@ -25,15 +25,15 @@ function CrearFacturaFormulario({errores, callback,
                             <Form.Label>Fecha Factura</Form.Label>
                             <Form.Control 
                                 type="date" 
-                                value={moment(fecha).format('yyyy-MM-DD')} 
+                                value={moment(fechaFactura).format('yyyy-MM-DD')} 
                                 min={moment().format('yyyy-MM-DD')}
                                 onChange={e=>setFechaFactura(e.target.value)}
-                                isInvalid={errores.fecha}                      
+                                isInvalid={errores.fechaFactura}                      
                             >                        
                             </Form.Control>          
                             
                             <Form.Control.Feedback type="invalid">
-                                {errores.fecha}
+                                {errores.fechaFactura}
                             </Form.Control.Feedback>
                         </Form.Group>
                     </Col>                           
@@ -46,21 +46,21 @@ function CrearFacturaFormulario({errores, callback,
                             <Form.Label>Fecha Vencimiento</Form.Label>
                             <Form.Control 
                                 type="date" 
-                                value={moment(fecha).format('yyyy-MM-DD')} 
+                                value={moment(fechaVencimiento).format('yyyy-MM-DD')} 
                                 min={moment().format('yyyy-MM-DD')}
                                 onChange={e=>setFechaVencimiento(e.target.value)}
-                                isInvalid={errores.fecha}                      
+                                isInvalid={errores.fechaVencimiento}                      
                             >                        
                             </Form.Control>          
                             
                             <Form.Control.Feedback type="invalid">
-                                {errores.fecha}
+                                {errores.fechaVencimiento}
                             </Form.Control.Feedback>
                         </Form.Group>
                     </Col>                           
                 </Row>
             }
-            {editable &&
+            {!editable &&
                 <Row>
                     <Col md="6" xs="12">
                         <Form.Group controlId="valorPagar">
@@ -76,6 +76,10 @@ function CrearFacturaFormulario({errores, callback,
                             </Form.Control.Feedback>
                         </Form.Group>
                     </Col>
+                </Row>
+            }   
+            {!editable &&
+                <Row>
                     <Col md="6" xs="12">
                         <Form.Group controlId="valorMora">
                             <Form.Label>Valor Mora</Form.Label>
@@ -90,6 +94,10 @@ function CrearFacturaFormulario({errores, callback,
                             </Form.Control.Feedback>
                         </Form.Group>
                     </Col>
+                </Row>
+            }
+            {!editable &&
+                <Row>
                     <Col md="6" xs="12">
                         <Form.Group controlId="valorFactura">
                             <Form.Label>Valor Factura</Form.Label>
@@ -103,12 +111,11 @@ function CrearFacturaFormulario({errores, callback,
                                 {errores.valorFactura}
                             </Form.Control.Feedback>
                         </Form.Group>
-                    </Col>
-                            
+                    </Col>        
                 </Row>
             }
             <Button variant="primary" type="submit" className="mt-3">
-                {!editable ? "Crear " : "Editar "}
+                {!editable ? "Crear " : "Pagar "}
                 factura
             </Button>
         </Form>        

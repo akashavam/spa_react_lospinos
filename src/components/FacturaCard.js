@@ -8,8 +8,8 @@ const FacturaCard= ({factura, editable})=>{
     return (
         <Card className="mt-3 mb-3">
             <Card.Header className="mi-card">
-                {factura.creado ? 
-                        <Badge className="mi-badge-jugado">Creada</Badge> 
+                {factura.estado ? 
+                        <Badge className="mi-badge-pagada">Pagada</Badge> 
                         : 
                         <Badge className="mi-badge-pendiente">Pendiente</Badge>
                 }
@@ -18,7 +18,7 @@ const FacturaCard= ({factura, editable})=>{
                         <Button variant="primary" size="sm" className="me-2"
                                 as={NavLink} to={`/editarfactura/${factura.idFactura}`}
                         >
-                            Editar
+                            Pagar
                         </Button>
                         <EliminarFacturaBoton id={factura.idFactura}/>
                     </div>
@@ -33,9 +33,7 @@ const FacturaCard= ({factura, editable})=>{
                 <Card.Text>
                     Fecha: {moment(factura.fecha).format("D[/]MM[/]YYYY")}
                 </Card.Text>
-                <Card.Text>
-                    Creado por {factura.usuarioEntity.nombre}, {moment(factura.creado).fromNow()}
-                </Card.Text>
+
             </Card.Body>
         </Card>
     )
