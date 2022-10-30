@@ -30,25 +30,23 @@ const FacturaDetalle= ()=>{
                 {factura && (
                     <Card className="mt-3 mb-3">
                         <Card.Header className="mi-card">
-                            {factura.creado ? 
-                                    <Badge className="mi-badge-creado">Creado</Badge> : 
+                            {factura.estado ? 
+                                    <Badge className="mi-badge-pagada">Pagada</Badge> : 
                                     <Badge className="mi-badge-pendiente">Pendiente</Badge>
                             }                        
                         </Card.Header>
                         <Card.Body>
                             <p>
                                 Valor Pagar
-                                <Badge className="mi-badge-marcador">{factura.valorPagar}</Badge> 
+                                <Badge className="mi-badge-valor">{factura.valorPagar}</Badge> 
                                 Valor Mora
-                                <Badge className="mi-badge-marcador">{factura.valorMora}</Badge> 
+                                <Badge className="mi-badge-valor">{factura.valorMora}</Badge> 
                                 Valor Factura
-                                <Badge className="mi-badge-marcador">{factura.valorFactura}</Badge> 
+                                <Badge className="mi-badge-valor">{factura.valorFactura}</Badge> 
                             </p>
-                            Fecha: {moment(factura.fecha).format("D[/]MM[/]YYYY")}    
+                            Fecha: {moment(factura.fechaFactura).format("D[/]MM[/]YYYY")}
                         </Card.Body>
-                        <Card.Footer>
-                            Creado por {factura.usuarioEntity.nombre}, {moment(factura.creado).fromNow()}
-                        </Card.Footer>
+
                     </Card>
                 )}
             </Col>
